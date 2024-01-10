@@ -1,6 +1,6 @@
 Exposed neo4j (defaults to port 7687) - can change port by setting $NEOPORT
 
-Update your ~/.nxc/nxc.conf with the default credations
+Update your ~/.nxc/nxc.conf with the default credentials.
 ```console
 [BloodHound]
 bh_enabled = True
