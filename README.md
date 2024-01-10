@@ -1,3 +1,21 @@
+Exposed neo4j (defaults to port 7687) - can change port by setting $NEOPORT
+
+Update your ~/.nxc/nxc.conf with the default credations
+```console
+[BloodHound]
+bh_enabled = True
+bh_uri = 127.0.0.1
+bh_port = 7687
+bh_user = neo4j
+bh_pass = bloodhoundcommunityedition
+```
+If using through proxychains remember to route the port back locally.
+`ssh root@TARGETIP -R 7687:localhost:7687`
+
+Bloodhound-ce doesn't natively have owned user support, so custom cyphers will have to be added/used.
+Bloodhound.py is broken currently due to Bloodhound reverting field types. You will need to manually change the fields to their string counterparts to import.
+https://github.com/dirkjanm/BloodHound.py/issues/157
+ 
  Single User BloodHound CE
 ==========================
 
