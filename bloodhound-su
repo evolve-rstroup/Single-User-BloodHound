@@ -24,6 +24,7 @@
 set -uo pipefail
 
 PORT="${PORT:-8181}"
+NEOPORT="${NEOPORT:-7687}"
 WORKSPACE="${WORKSPACE:-default}"
 DATA_DIR="${XDG_DATA_HOME:-$HOME/.local/share}/SingleUserBloodHound/$WORKSPACE"
 NEO4J_VOL="$DATA_DIR/neo4j"
@@ -70,6 +71,7 @@ podman container exists "$NEO4J_CONTAINER" || ( \
     podman create \
     --net "$NETWORK" --network-alias graph-db \
     --name "$NEO4J_CONTAINER" \
+    --publish 127.0.0.1:${NEOPORT}:7687 \
     --volume $NEO4J_VOL:/data \
     -e "NEO4J_AUTH=neo4j/bloodhoundcommunityedition" \
     docker.io/neo4j:4.4 \
